@@ -19,7 +19,7 @@ processor ConsoleGoldBuss
 		return b;
 	}
 	
-	float64 Gold( float x, int z ) /// Calculations for all channel
+	float Gold( float x, int z ) /// Calculations for all channel
 	{ 
 		float64 g = x;
 		if ( abs ( g ) < 1.18e-23 ) g = z * 1.18e-17;
@@ -37,8 +37,9 @@ processor ConsoleGoldBuss
 		int ex = ( int32 ( ( reinterpretFloatToInt ( float32 ( g ) ) >> 23 ) ) & 0xFF ) - 127;
 		z = BS ( z );
 		g += ( ( float64 ( z ) - 0x7fffffff ) * 5.5e-36 * pow ( 2.0 , ex + 62.0 ) );
-
-		return g;
+		
+		x = float32 ( g );
+		return x;
 	}
 	
 	void init()
@@ -51,8 +52,8 @@ processor ConsoleGoldBuss
 		loop 
 		{	
 			///we process and return the value of each channel in order
-			Out1 <- float32 ( Gold ( In1, rd1 ) ); 
-			Out2 <- float32 ( Gold ( In2, rd2 ) );
+			Out1 <- Gold ( In1, rd1 ); 
+			Out2 <- Gold ( In2, rd2 );
 
 			/// Bit Shuffle for channel's
 			rd1 = BS ( rd1 );
@@ -61,4 +62,5 @@ processor ConsoleGoldBuss
 			advance();
 		}				
 	}	
+
 }
