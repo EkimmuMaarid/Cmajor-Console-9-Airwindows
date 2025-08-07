@@ -18,8 +18,8 @@ You can get the details of the whole process, as conceived by the author, from h
 The Cmajor language, as you can see on their website, is designed to simplify plugin development by facilitating the build process.
 You can use this code as part of your cmajor projects, but they were written for native use inside Tracktion's daw Waveform, 
 which includes native application of patches written in cmajor.
-Two files .cmajor and .cmajorpatch should be stored inside the folder of the same name, which in turn should be located in the cmajor folder, 
-next to the vst\au folders and so on. Cmajor files in this location are perceived by waveform as valid audio plug-ins, 
+Two files `.cmajor` and `.cmajorpatch` should be stored inside the folder of the same name, which in turn should be located in the cmajor folder, 
+next to the `vst3` `au` folders and so on. Cmajor files in this location are perceived by waveform as valid audio plug-ins, 
 while both patch files are at the same time simple text files and source code, respectively.
 
 
@@ -31,7 +31,7 @@ The step taken is justified by the fact that it allows you to automate the encod
 simplifying the ability to edit the code to easily add a number of audio channels.
 
 Since Waveform itself works directly with only the 32-bit signal size, accordingly, only the 32-bit part of the plug-ins was taken, 
-which makes the loss of accuracy in the log1p and expm1 commands insignificant, completely overlapping the original dithering formula.
+which makes the loss of accuracy in the `log1p` and `expm1` commands insignificant, completely overlapping the original dithering formula.
 
 The plug-ins were written by learning the cmajor language, using artificial intelligence, 
 trying to preserve the authenticity of the original idea as much as possible.
