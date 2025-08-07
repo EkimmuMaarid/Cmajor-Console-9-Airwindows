@@ -1,0 +1,64 @@
+processor ConsoleGoldBuss
+{
+	input stream float In1, In2;
+	output stream float Out1, Out2;
+
+	std::random::RNG rng; ///Standart Library Random
+
+	/// generating a huge integer for dithering
+	int rd1 = int32 ( ( ( 1 + rng.getInt32() ) * 4294967295_L ) & 0xFFFFFFFFi64 ); 
+	int rd2 = int32 ( ( ( 1 + rng.getInt32() ) * 4294967295_L ) & 0xFFFFFFFFi64 );
+
+	int BS ( int b ) ///Bit Shuffle
+	{
+		int64 s = b;
+		s = ( s ^ (s << 13 ) ) & 0xFFFFFFFFi64; 
+		s = ( s ^ (s >> 17 ) ) & 0xFFFFFFFFi64;
+		s = ( s ^ (s << 5 ) ) & 0xFFFFFFFFi64;
+		b = int32 ( s );
+		return b;
+	}
+	
+	float64 Gold( float x, int z ) /// Calculations for all channel
+	{ 
+		float64 g = x;
+		if ( abs ( g ) < 1.18e-23 ) g = z * 1.18e-17;
+
+		if ( g > 1.0 ) g = 1.0;  /// Сoding of each channel by the golden ratio
+		else if ( g > 0.0 )
+			g = - ( exp (  log ( 1.0 - g ) * 0.6180339887498949 ) - 1.0 );
+		if ( g < - 1.0 ) g = - 1.0;
+		else if ( g < 0.0 )
+			g = exp ( log ( 1.0 + g ) * 0.6180339887498949 ) - 1.0;
+		
+		g *= 1.414213562373095; /// Gain & Pan Controls
+
+		/// Dithering for 32bit
+		int ex = ( int32 ( ( reinterpretFloatToInt ( float32 ( g ) ) >> 23 ) ) & 0xFF ) - 127;
+		z = BS ( z );
+		g += ( ( float64 ( z ) - 0x7fffffff ) * 5.5e-36 * pow ( 2.0 , ex + 62.0 ) );
+
+		return g;
+	}
+	
+	void init()
+    {
+        rng.seed ( 402L + processor.id );
+    }
+
+	void main()
+	{	
+		loop 
+		{	
+			///we process and return the value of each channel in order
+			Out1 <- float32 ( Gold ( In1, rd1 ) ); 
+			Out2 <- float32 ( Gold ( In2, rd2 ) );
+
+			/// Bit Shuffle for channel's
+			rd1 = BS ( rd1 );
+			rd2 = BS ( rd2 );
+			
+			advance();
+		}				
+	}	
+}

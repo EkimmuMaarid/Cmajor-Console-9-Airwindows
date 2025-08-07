@@ -1,0 +1,10 @@
+{
+	"CmajorVersion": 1,
+	"ID": "console.gold.buss",
+	"version": "1.0",
+	"name": "Console Gold Buss",
+	"description": "Cmajor patch",
+	"category": "effect",
+	"isInstrument": false,
+	"source": "ConsoleGoldBuss.cmajor"
+}

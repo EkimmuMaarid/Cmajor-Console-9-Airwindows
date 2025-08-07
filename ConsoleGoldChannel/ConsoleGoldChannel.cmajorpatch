@@ -1,0 +1,10 @@
+{
+	"CmajorVersion": 1,
+	"ID": "console.gold.channel",
+	"version": "1.0",
+	"name": "Console Gold Channel",
+	"description": "Cmajor patch",
+	"category": "effect",
+	"isInstrument": false,
+	"source": "ConsoleGoldChannel.cmajor"
+}
