@@ -1,21 +1,19 @@
 the original plug-in console 9 from Airwondows translated to Cmajor for use inside Daw Waveform natively
 
-You can find the source code of the original C++ plugins at the following link
-https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Channel
-https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Buss
+You can find the source code of the original C++ plugins at the following link [Console9Channel](https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Channel) [Console9Buss](https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Buss)
 
-The cmajor language can be studied at the link
-https://cmajor.dev/
+The cmajor language can be studied at the link [cmajor.dev](https://cmajor.dev/)
 
 
-Description
+## Description
 
 Console plug-ins, using the golden ratio principle, encode the audio signal of each track and then, 
 after mixing inside the daw, decompresses the signal code back, thereby obtaining console mixing. 
 You can get the details of the whole process, as conceived by the author, from him personally, on his own website.
+[Console 9](https://www.airwindows.com/console9/)
 
 
-How to use
+## How to use
 
 The Cmajor language, as you can see on their website, is designed to simplify plugin development by facilitating the build process.
 You can use this code as part of your cmajor projects, but they were written for native use inside Tracktion's daw Waveform, 
@@ -25,7 +23,7 @@ next to the vst\au folders and so on. Cmajor files in this location are perceive
 while both patch files are at the same time simple text files and source code, respectively.
 
 
-Process events
+## Process events
 
 The actions of the original console plug-in and its effect on sound are completely repeated, while preserving the process. 
 The difference, apart from functional solutions, lies in the abolition of the functions of volume controls and panoramas with their smoothing. 
