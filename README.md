@@ -1,4 +1,4 @@
-the original plug-in console 9 from Airwondows translated to Cmajor for use inside Daw Waveform natively
+### the original plug-in console 9 from Airwindows translated to Cmajor for use inside Daw Waveform natively
 
 You can find the source code of the original C++ plugins at the following link [Console9Channel](https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Channel) [Console9Buss](https://github.com/airwindows/airwindows/tree/master/plugins/WinVST/Console9Buss)
 
